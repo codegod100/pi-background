@@ -30,7 +30,6 @@
     "phase": "idle",
     "testFiles": [],
     "sourceFiles": [
-      "/home/nandi/.pi/agent/extensions/background-tracker.ts",
       "/home/nandi/code/pi-background/background-tracker.ts"
     ],
     "redVerificationPending": false

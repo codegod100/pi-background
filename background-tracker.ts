@@ -50,7 +50,7 @@ export default function (pi: ExtensionAPI) {
 		if (runningCommands.size > 0) {
 			for (const [cmd] of runningCommands) {
 				const cmdPreview = cmd.length > 30 ? cmd.slice(0, 30) + "..." : cmd;
-				parts.push(theme.fg("info", `▶ ${cmdPreview}`));
+				parts.push(theme.fg("text", `▶ ${cmdPreview}`));
 			}
 		}
 
@@ -97,7 +97,7 @@ export default function (pi: ExtensionAPI) {
 
 			// Show running bash commands
 			if (cmdCount > 0) {
-				lines.push(theme.fg("info", theme.bold(`\nRunning Commands (${cmdCount})`)));
+				lines.push(theme.fg("text", theme.bold(`\nRunning Commands (${cmdCount})`)));
 				for (const [cmd] of runningCommands) {
 					const elapsed = Math.floor((Date.now() - runningCommands.get(cmd)!.startTime) / 1000);
 					const mins = Math.floor(elapsed / 60);
@@ -337,7 +337,8 @@ export default function (pi: ExtensionAPI) {
 
 				const choice = await ctx.ui.select("Select session:", items.map(i => i.label));
 				if (choice !== undefined) {
-					const sessionId = items[choice].value;
+					const idx = items.findIndex(i => i.label === choice);
+					const sessionId = items[idx].value;
 					pi.sendUserMessage(`/attach ${sessionId}`);
 					backgroundSessions.delete(sessionId);
 					if (backgroundSessions.size === 0 && !agentWorking) {
@@ -398,7 +399,7 @@ export default function (pi: ExtensionAPI) {
 				ctx.ui.setWidget("background-tracker", undefined);
 			}
 			updateDisplay(ctx);
-			ctx.ui.notify(`Dismissed ${count} background session(s)`, "success");
+			ctx.ui.notify(`Dismissed ${count} background session(s)`, "info");
 		},
 	});
 
