@@ -1,0 +1,43 @@
+{
+  "name": "@nandithebull/pi-background",
+  "version": "1.0.0",
+  "description": "Background task tracker extension for pi - shows running commands and background sessions in the UI",
+  "main": "dist/background-tracker.js",
+  "types": "dist/background-tracker.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "pi",
+    "pi-coding-agent",
+    "extension",
+    "background",
+    "task",
+    "tracker"
+  ],
+  "author": "nandithebull",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nandithebull/pi-background.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nandithebull/pi-background/issues"
+  },
+  "homepage": "https://github.com/nandithebull/pi-background#readme",
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": ">=0.125.0",
+    "@mariozechner/pi-tui": ">=0.125.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "pi": {
+    "extensions": ["./dist/background-tracker.js"]
+  }
+}
